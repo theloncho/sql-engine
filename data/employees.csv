@@ -1,0 +1,9 @@
+id,name,dept_id,salary,active
+1,Alice,10,75000.00,true
+2,Bob,20,82000.50,true
+3,Carol,10,91000.00,false
+4,Dave,30,,true
+5,Eve,20,60000.00,true
+6,Frank,10,88500.00,true
+7,Grace,20,95000.00,true
+8,Henry,30,71000.00,false
