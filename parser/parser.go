@@ -3,6 +3,8 @@
 //
 // La gramática soportada está documentada en GRAMMAR.md.
 // Los errores de sintaxis incluyen posición (línea:columna) para mensajes útiles.
+// Package parser handles SQL parsing logic.
+// This file processes tokens and builds the AST.
 package parser
 
 import (
