@@ -31,11 +31,20 @@ type Value struct {
 
 // --- Constructores ---
 
-func Null() Value                { return Value{Kind: KindNull} }
-func IntVal(v int64) Value       { return Value{Kind: KindInt, IVal: v} }
-func FloatVal(v float64) Value   { return Value{Kind: KindFloat, FVal: v} }
-func StringVal(v string) Value   { return Value{Kind: KindString, SVal: v} }
-func BoolVal(v bool) Value       { return Value{Kind: KindBool, BVal: v} }
+// Null crea un nuevo Value que representa un valor SQL NULL.
+func Null() Value { return Value{Kind: KindNull} }
+
+// IntVal crea un nuevo Value de tipo entero de 64 bits (KindInt).
+func IntVal(v int64) Value { return Value{Kind: KindInt, IVal: v} }
+
+// FloatVal crea un nuevo Value de tipo punto flotante de 64 bits (KindFloat).
+func FloatVal(v float64) Value { return Value{Kind: KindFloat, FVal: v} }
+
+// StringVal crea un nuevo Value de tipo texto/cadena (KindString).
+func StringVal(v string) Value { return Value{Kind: KindString, SVal: v} }
+
+// BoolVal crea un nuevo Value de tipo booleano (KindBool).
+func BoolVal(v bool) Value { return Value{Kind: KindBool, BVal: v} }
 
 // IsNull retorna true si el valor es NULL.
 func (v Value) IsNull() bool { return v.Kind == KindNull }
