@@ -136,3 +136,15 @@ Project [name, dept]
 ```
 
 Agregar un operador nuevo **no requiere modificar ningún operador existente** (principio abierto/cerrado).
+
+## Automatización con Makefile
+
+Si dispones de la herramienta `make`, puedes utilizar los siguientes atajos:
+
+```bash
+make build    # Compila el ejecutable sql-engine
+make test     # Ejecuta la suite de pruebas unitarias e integración
+make run      # Compila y ejecuta el motor con datos de ejemplo
+make clean    # Limpia los binarios generados
+```
+
