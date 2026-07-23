@@ -105,6 +105,9 @@ func (a *Aggregate) Next() (Row, error) {
 	return row, nil
 }
 
+// compute is the core of the aggregation process.
+// It iterates over all rows, groups them using a key,
+// and updates accumulators for each aggregation function.
 // compute consume todas las filas del hijo, las agrupa y calcula los agregados.
 func (a *Aggregate) compute() error {
 	childSchema := a.child.Schema()
@@ -229,6 +232,8 @@ func (a *Aggregate) compute() error {
 }
 
 // buildResultRow construye la fila de resultado para un grupo.
+// buildResultRow transforms accumulated group data into a final output row.
+// It applies SQL aggregation rules like NULL handling and division for AVG.
 func (a *Aggregate) buildResultRow(acc *accumulator) Row {
 	row := make(Row, 0, len(a.groupBy)+len(a.aggSpecs))
 	row = append(row, acc.groupVals...)
