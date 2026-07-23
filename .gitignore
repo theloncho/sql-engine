@@ -1,0 +1,10 @@
+# Binarios compilados
+*.exe
+*.exe.meta
+*.dll
+*.so
+*.dylib
+sql-engine
+
+# Directorios de build
+build/
