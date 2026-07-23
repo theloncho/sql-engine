@@ -5,11 +5,11 @@ Motor SQL completo escrito en Go que implementa el **modelo Volcano (iteradores)
 ## Compilación y ejecución
 
 ```bash
-# Compilar
+# Compilar el proyecto completo
 go build ./...
 
-# Ejecutar tests
-go test ./...
+# Ejecutar la suite completa de pruebas unitarias
+go test -v ./...
 
 # Ejecutar el REPL interactivo
 go run . -load data/employees.csv,data/departments.csv
