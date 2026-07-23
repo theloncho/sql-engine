@@ -186,3 +186,14 @@ func TestParser_Semicolon(t *testing.T) {
 		t.Error("expected table t")
 	}
 }
+
+func TestParser_LowercaseKeywords(t *testing.T) {
+	// Verificar que el parser acepte palabras clave en minúsculas.
+	stmt := mustParse(t, "select id, name from users where age > 21 limit 10")
+	if stmt.From.Name != "users" {
+		t.Errorf("from = %q, want users", stmt.From.Name)
+	}
+	if stmt.Limit == nil || *stmt.Limit != 10 {
+		t.Errorf("limit = %v, want 10", stmt.Limit)
+	}
+}
