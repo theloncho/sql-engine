@@ -20,11 +20,11 @@ type SortKey struct {
 
 // Sort materializa todas las filas del hijo y las retorna ordenadas.
 type Sort struct {
-	child  Operator
-	keys   []SortKey
-	buffer []Row  // filas materializadas
-	cursor int    // siguiente fila a retornar
-	ready  bool   // true si ya materializamos y ordenamos
+	child   Operator
+	keys    []SortKey
+	buffer  []Row // filas materializadas
+	cursor  int   // siguiente fila a retornar
+	ready   bool  // true si ya materializamos y ordenamos
 	sortErr error // error capturado durante la comparación (sort.Slice no retorna error)
 }
 
@@ -175,5 +175,5 @@ func kindFromValue(v types.Value) types.Kind {
 	return v.Kind
 }
 
-func (s *Sort) Children() []Operator { return []Operator{s.child} }
+func (s *Sort) Children() []Operator  { return []Operator{s.child} }
 func (l *Limit) Children() []Operator { return []Operator{l.child} }

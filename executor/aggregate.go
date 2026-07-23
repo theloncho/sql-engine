@@ -18,10 +18,10 @@ import (
 
 // AggSpec describe una función de agregación a calcular.
 type AggSpec struct {
-	Func   string       // COUNT, SUM, AVG, MIN, MAX
-	Arg    parser.Expr  // nil para COUNT(*)
-	IsStar bool         // true para COUNT(*)
-	Alias  string       // nombre de columna en la salida
+	Func   string      // COUNT, SUM, AVG, MIN, MAX
+	Arg    parser.Expr // nil para COUNT(*)
+	IsStar bool        // true para COUNT(*)
+	Alias  string      // nombre de columna en la salida
 }
 
 // accumulator mantiene el estado de acumulación para un grupo.

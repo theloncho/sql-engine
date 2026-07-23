@@ -18,14 +18,14 @@ type Node interface {
 
 // SelectStmt representa una consulta SELECT completa.
 type SelectStmt struct {
-	Distinct bool          // SELECT DISTINCT
-	Cols     []SelectCol   // columnas seleccionadas
-	From     *TableRef     // tabla principal
-	Joins    []JoinClause  // JOINs
-	Where    Expr          // condición WHERE (nil si ausente)
-	GroupBy  []Expr        // columnas de GROUP BY
-	OrderBy  []OrderItem   // criterios de ORDER BY
-	Limit    *int64        // valor de LIMIT (nil si ausente)
+	Distinct bool         // SELECT DISTINCT
+	Cols     []SelectCol  // columnas seleccionadas
+	From     *TableRef    // tabla principal
+	Joins    []JoinClause // JOINs
+	Where    Expr         // condición WHERE (nil si ausente)
+	GroupBy  []Expr       // columnas de GROUP BY
+	OrderBy  []OrderItem  // criterios de ORDER BY
+	Limit    *int64       // valor de LIMIT (nil si ausente)
 }
 
 func (s *SelectStmt) sql() string {
@@ -109,8 +109,8 @@ func (j *JoinClause) sql() string {
 // SelectCol es una columna del SELECT: una expresión con alias opcional.
 // Si IsWildcard=true, la expresión es NULL y el alias se ignora (representa `*`).
 type SelectCol struct {
-	Expr      Expr
-	Alias     string
+	Expr       Expr
+	Alias      string
 	IsWildcard bool
 }
 
@@ -192,7 +192,7 @@ type IntLiteral struct {
 	Value int64
 }
 
-func (il *IntLiteral) exprNode() {}
+func (il *IntLiteral) exprNode()   {}
 func (il *IntLiteral) sql() string { return fmt.Sprintf("%d", il.Value) }
 
 // FloatLiteral es un literal flotante.
@@ -200,7 +200,7 @@ type FloatLiteral struct {
 	Value float64
 }
 
-func (fl *FloatLiteral) exprNode() {}
+func (fl *FloatLiteral) exprNode()   {}
 func (fl *FloatLiteral) sql() string { return fmt.Sprintf("%g", fl.Value) }
 
 // StringLiteral es un literal de cadena.
@@ -208,7 +208,7 @@ type StringLiteral struct {
 	Value string
 }
 
-func (sl *StringLiteral) exprNode() {}
+func (sl *StringLiteral) exprNode()   {}
 func (sl *StringLiteral) sql() string { return "'" + strings.ReplaceAll(sl.Value, "'", "''") + "'" }
 
 // BoolLiteral es un literal booleano (TRUE/FALSE).
@@ -227,14 +227,14 @@ func (bl *BoolLiteral) sql() string {
 // NullLiteral es el literal NULL.
 type NullLiteral struct{}
 
-func (nl *NullLiteral) exprNode() {}
+func (nl *NullLiteral) exprNode()   {}
 func (nl *NullLiteral) sql() string { return "NULL" }
 
 // AggFunc es una llamada a función de agregación: COUNT(*), SUM(col), etc.
 type AggFunc struct {
-	Name    string // COUNT, SUM, AVG, MIN, MAX
-	Arg     Expr   // nil para COUNT(*)
-	IsStar  bool   // true para COUNT(*)
+	Name   string // COUNT, SUM, AVG, MIN, MAX
+	Arg    Expr   // nil para COUNT(*)
+	IsStar bool   // true para COUNT(*)
 }
 
 func (a *AggFunc) exprNode() {}

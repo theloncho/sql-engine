@@ -6,12 +6,12 @@ type TokenKind int
 
 const (
 	// Literales y nombres
-	EOF     TokenKind = iota
-	ILLEGAL          // carácter no reconocido
-	IDENT            // nombre de tabla/columna
-	INT_LIT          // literal entero: 42
-	FLOAT_LIT        // literal flotante: 3.14
-	STRING_LIT       // literal string: 'hello'
+	EOF        TokenKind = iota
+	ILLEGAL              // carácter no reconocido
+	IDENT                // nombre de tabla/columna
+	INT_LIT              // literal entero: 42
+	FLOAT_LIT            // literal flotante: 3.14
+	STRING_LIT           // literal string: 'hello'
 
 	// Operadores de comparación
 	EQ  // =

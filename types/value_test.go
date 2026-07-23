@@ -38,11 +38,11 @@ func TestValueCmp(t *testing.T) {
 		{IntVal(2), IntVal(2), 0, false},
 		{IntVal(3), IntVal(1), 1, false},
 		{FloatVal(1.5), FloatVal(2.5), -1, false},
-		{IntVal(2), FloatVal(2.0), 0, false},   // promoción numérica
+		{IntVal(2), FloatVal(2.0), 0, false}, // promoción numérica
 		{FloatVal(3.0), IntVal(2), 1, false},
 		{StringVal("a"), StringVal("b"), -1, false},
 		{StringVal("z"), StringVal("z"), 0, false},
-		{Null(), IntVal(1), 0, true},            // NULL → error
+		{Null(), IntVal(1), 0, true}, // NULL → error
 		{IntVal(1), Null(), 0, true},
 	}
 	for _, tt := range tests {
@@ -68,8 +68,8 @@ func TestValueArith(t *testing.T) {
 		{IntVal(10), IntVal(3), "-", KindInt, false},
 		{IntVal(3), FloatVal(2.0), "*", KindFloat, false},
 		{FloatVal(6.0), FloatVal(2.0), "/", KindFloat, false},
-		{IntVal(1), IntVal(0), "/", KindNull, true},   // div/0
-		{Null(), IntVal(1), "+", KindNull, false},      // NULL propagation
+		{IntVal(1), IntVal(0), "/", KindNull, true}, // div/0
+		{Null(), IntVal(1), "+", KindNull, false},   // NULL propagation
 	}
 	for _, tt := range tests {
 		var result Value

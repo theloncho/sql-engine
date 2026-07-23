@@ -19,11 +19,11 @@ import (
 
 // HashJoin implementa INNER JOIN con tabla hash.
 type HashJoin struct {
-	outer     Operator
-	inner     Operator
-	outerKey  parser.Expr // clave de join del lado outer
-	innerKey  parser.Expr // clave de join del lado inner
-	schema    OutputSchema
+	outer    Operator
+	inner    Operator
+	outerKey parser.Expr // clave de join del lado outer
+	innerKey parser.Expr // clave de join del lado inner
+	schema   OutputSchema
 
 	// Estado de la fase de probe.
 	hashTable map[string][]Row // hash table construida sobre inner
