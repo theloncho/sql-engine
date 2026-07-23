@@ -16,6 +16,9 @@ import (
 	"github.com/theloncho/sql-engine/types"
 )
 
+// Aggregate is a blocking operator that performs GROUP BY operations.
+// It consumes all input rows before producing any output rows.
+// This is typical in SQL engines for aggregation queries.
 // AggSpec describe una función de agregación a calcular.
 type AggSpec struct {
 	Func   string      // COUNT, SUM, AVG, MIN, MAX
